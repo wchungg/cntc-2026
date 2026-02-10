@@ -135,7 +135,7 @@ export const Home = () => {
       </section>
 
       {/* SLOGAN */}
-      <div className="text-center font-extrabold text-[55px] leading-tight">
+      <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
         <p className="bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
           NEUROTECHNOLOGY INNOVATION:
         </p>
@@ -147,7 +147,7 @@ export const Home = () => {
 
 
       {/* PRESENTED BY */}
-      <section className="w-full px-6 pb-10 mt-16">
+      <section className="w-full px-6 pb-10 mt-20">
         <div className="mx-auto max-w-6xl">
           <div className="text-center text-[40px] font-bold tracking-wider text-slate-900">
             PRESENTED BY
@@ -162,22 +162,22 @@ export const Home = () => {
       </section>
 
       {/* SPONSORED BY */}
-      <section className="w-full px-6 pb-14 mt-16">
-        <div className="mx-auto max-w-6xl">
+      <section className="w-full px-0 pb-14 mt-16">
+        <div className="mx-auto ">
           <div className="text-center text-[40px] font-bold tracking-wider text-slate-900">
             SPONSORED BY
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-20">
+          <div className="flex flex-wrap items-center justify-center gap-20 -mt-3">
             {sponsorLogos.map((logo, i) => (
-              <img key={i} src={logo.src} alt="Sponsor" className={`${logo.size || "h-40"} object-contain`} loading="lazy" />
+              <img key={i} src={logo.src} alt="Sponsor" className={`${logo.size || "h-64"} object-contain`} loading="lazy" />
             ))}
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <div className="h-20 w-full bg-blue-900" />
+      <div className="h-28 w-full bg-[#082E7E]" />
   </div>
   
   

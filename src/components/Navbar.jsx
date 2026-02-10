@@ -46,30 +46,32 @@ const Navbar = ({ transparent = false}) => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-15 md:flex">
+        <div className="hidden items-center gap-20 md:flex">
           {navItems.map((item) => (
             <NavLink
-                key={item.name}
-                to={item.path}
-                end={item.path === "/"}
-                className={({ isActive }) =>
+              key={item.name}
+              to={item.path}
+              end={item.path === "/"}
+              className={({ isActive }) =>
                 cn(
-                    "text-[13px] font-bold tracking-wider transition-colors duration-200",
-                    isActive
-                    ? "text-[#A3B4D0]"
+                  "text-[16px] font-bold tracking-wider transition-colors duration-200",
+                  isActive
+                    ? transparent && !showScrolledStyle
+                      ? "text-[#A3B4D0]"
+                      : "text-[#5D77B1]" 
                     : showScrolledStyle
                       ? "text-black hover:text-black/70"
                       : "text-white hover:text-white/80"
                 )
-                }
+              }
             >
-                {item.name}
+              {item.name}
             </NavLink>
             ))}
 
          <Link
             to="/register"
-            className="rounded-full bg-[#1F40AF] px-4 py-2 text-[12px] font-bold tracking-wider text-white transition hover:bg-blue-800"
+            className="rounded-full bg-[#1F40AF] px-4 py-2 text-[16px] font-bold tracking-wider text-white transition hover:bg-blue-800"
           >
             REGISTER
           </Link>
@@ -98,14 +100,15 @@ const Navbar = ({ transparent = false}) => {
         >
           <div className="flex flex-col items-center gap-8 text-lg">
             {navItems.map((item) => (
-              <a
+              <NavLink
                 key={item.name}
-                href={item.href}
+                to={item.path}
+                end={item.path === "/"}
                 onClick={() => setIsMenuOpen(false)}
                 className="font-semibold tracking-wider text-slate-800 hover:text-blue-700"
               >
                 {item.name}
-              </a>
+              </NavLink>
             ))}
 
             <Link

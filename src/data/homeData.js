@@ -32,7 +32,7 @@ export const presentedByLogos = [ // no size -> defaults to 23px
 ]
 
 export const sponsorLogos = [
-  { src: sponsorEmotiv, size: "h-50" },
+  { src: sponsorEmotiv, size: "h-64" },
   { src: sponsorOpenwater },
-  { src: sponsorCeribell, size: "h-24" },
+  { src: sponsorCeribell, size: "h-36" },
 ]
