@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar'
 
 export const Speakers = () => {
   return <div className='min-h-screen'>
-    <Navbar />
+    <Navbar transparent={false} />
     
   </div>
 }

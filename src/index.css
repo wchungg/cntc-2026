@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+  animation: marquee-left 55s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-span {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+}
+
+@keyframes marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}

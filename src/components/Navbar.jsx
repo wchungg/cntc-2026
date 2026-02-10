@@ -13,25 +13,29 @@ const navItems = [
   { name: "POSTERS", path: "/posters" },
 ]
 
-const Navbar = () => {
+const Navbar = ({ transparent = false}) => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
-        const handleScroll = () => {
-        setIsScrolled(window.scrollY > 20)
-        }
+      if (!transparent) return
 
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 20)
+      }
+
+      window.addEventListener("scroll", handleScroll)
+      return () => window.removeEventListener("scroll", handleScroll)
+    }, [transparent])
+
+    const showScrolledStyle = transparent ? isScrolled : true
 
   return (
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-slate-100/95 backdrop-blur-md shadow-sm py-3"
+        showScrolledStyle
+          ? "bg-[#DFE8F6] backdrop-blur-md shadow-sm py-3"
           : "bg-transparent py-5"
       )}
     >
@@ -42,7 +46,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-15 md:flex">
           {navItems.map((item) => (
             <NavLink
                 key={item.name}
@@ -53,7 +57,9 @@ const Navbar = () => {
                     "text-[13px] font-bold tracking-wider transition-colors duration-200",
                     isActive
                     ? "text-[#A3B4D0]"
-                    : "text-white hover:text-white/80"
+                    : showScrolledStyle
+                      ? "text-black hover:text-black/70"
+                      : "text-white hover:text-white/80"
                 )
                 }
             >
@@ -63,7 +69,7 @@ const Navbar = () => {
 
          <Link
             to="/register"
-            className="rounded-full bg-blue-700 px-4 py-2 text-[12px] font-bold tracking-wider text-white transition hover:bg-blue-800"
+            className="rounded-full bg-[#1F40AF] px-4 py-2 text-[12px] font-bold tracking-wider text-white transition hover:bg-blue-800"
           >
             REGISTER
           </Link>
@@ -73,12 +79,11 @@ const Navbar = () => {
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="md:hidden p-2 z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
           {isMenuOpen ? (
-            <X size={24} className={isScrolled ? "text-black" : "text-white"} />
+            <X size={24} className={showScrolledStyle ? "text-black" : "text-white"} />
           ) : (
-            <Menu size={24} className={isScrolled ? "text-black" : "text-white"} />
+            <Menu size={24} className={showScrolledStyle ? "text-black" : "text-white"} />
           )}
         </button>
 
@@ -106,7 +111,7 @@ const Navbar = () => {
             <Link
               to="/register"
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-full bg-blue-700 px-6 py-3 text-sm font-bold tracking-wider text-white"
+              className="rounded-full bg-[#1F40AF] px-6 py-3 text-sm font-bold tracking-wider text-white"
             >
               REGISTER
             </Link>
