@@ -1,13 +1,13 @@
-import Navbar from '../components/Navbar'
-import heroImg from '../assets/heroImg.jpg'
-import aboutImg from "../assets/about.jpg"
+import Navbar from "../components/Navbar";
+import heroImg from "../assets/heroImg.jpg";
+import aboutImg from "../assets/about.jpg";
 
 import {
   marqueeText,
   speakerTiles,
   presentedByLogos,
-  sponsorLogos
-} from "../data/homeData"
+  sponsorLogos,
+} from "../data/homeData";
 
 function Marquee({ text }) {
   return (
@@ -19,34 +19,40 @@ function Marquee({ text }) {
         </span>
       </div>
     </div>
-  )
+  );
 }
 
 function SpeakerTile({ name, img }) {
   return (
     <div className="w-[170px] shrink-0 bg-white shadow-sm ring-1 ring-black/5">
       <div className="h-[120px] w-full overflow-hidden bg-gray-100">
-        <img src={img} alt={name} className="h-full w-full object-cover" loading="lazy" />
+        <img
+          src={img}
+          alt={name}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
       </div>
       <div className="px-2 py-2 text-center text-[11px] font-semibold text-gray-900">
         {name}
       </div>
     </div>
-  )
+  );
 }
 
-
 export const Home = () => {
-  return <div className='min-h-screen bg-white'>
-    <Navbar transparent={true} />
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar transparent={true} />
 
-    {/* HERO */}
+      {/* HERO */}
       <header className="relative min-h-[540px] md:min-h-[900px]">
         <div className="absolute inset-0">
-          <img 
-            src={heroImg} 
-            alt="CNTC Hero" 
-            className="h-full w-full object-cover blur-[1.5px] scale-100" />
+          <img
+            src={heroImg}
+            alt="CNTC Hero"
+            className="h-full w-full object-cover blur-[1.5px] scale-100"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/10" />
         </div>
 
@@ -75,9 +81,8 @@ export const Home = () => {
             </div>
           </div>
         </div>
-
       </header>
-        <Marquee text={marqueeText} />
+      <Marquee text={marqueeText} />
 
       {/* ABOUT SECTION */}
       <section className="w-full px-6 py-14 mt-24 overflow-x-hidden">
@@ -99,24 +104,23 @@ export const Home = () => {
             <div className="absolute top-1/2 -translate-y-1/2 left-[-28vw] w-[92vw] md:left-[-22vw] md:w-[78vw] lg:left-[-21vw] lg:w-[70vw]">
               <div className="rounded-[220px] bg-[#5E7FB2] py-12 pl-24 pr-10 md:py-14 md:pl-50 md:pr-12 shadow-sm">
                 <h2 className="text-white font-extrabold leading-tight tracking-wide text-[34px] md:text-[42px]">
-                    PIONEERING THE FUTURE OF
-                    <br />
-                    NEUROTECHNOLOGY
-                  </h2>
+                  PIONEERING THE FUTURE OF
+                  <br />
+                  NEUROTECHNOLOGY
+                </h2>
 
-                  <p className="mt-6 max-w-[520px] text-[18px] md:text-[20px] leading-7 text-white/90">
-                    The 4th annual California Neurotechnology <br />
-                    Conference is coming to the Bay! Established <br />
-                    in 2023, this is the only West-Coast <br />
-                    conference bringing together students and <br />
-                    experts for a day dedicated to expanding the <br />
-                    frontiers of neurotechnology.
-                  </p>
-
-                </div>
+                <p className="mt-6 max-w-[520px] text-[18px] md:text-[20px] leading-7 text-white/90">
+                  The 4th annual California Neurotechnology <br />
+                  Conference is coming to the Bay! Established <br />
+                  in 2023, this is the only West-Coast <br />
+                  conference bringing together students and <br />
+                  experts for a day dedicated to expanding the <br />
+                  frontiers of neurotechnology.
+                </p>
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       {/* SPEAKERS STRIP */}
@@ -145,7 +149,6 @@ export const Home = () => {
         </p>
       </div>
 
-
       {/* PRESENTED BY */}
       <section className="w-full px-6 pb-10 mt-20">
         <div className="mx-auto max-w-6xl">
@@ -155,7 +158,13 @@ export const Home = () => {
 
           <div className="mt-10 flex flex-wrap items-center justify-center items-center gap-10">
             {presentedByLogos.map((logo, i) => (
-              <img key={i} src={logo.src} alt="Presented by" className={`${logo.size || "h-23"} object-contain`} loading="lazy" />
+              <img
+                key={i}
+                src={logo.src}
+                alt="Presented by"
+                className={`${logo.size || "h-23"} object-contain`}
+                loading="lazy"
+              />
             ))}
           </div>
         </div>
@@ -170,7 +179,13 @@ export const Home = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-20 -mt-3">
             {sponsorLogos.map((logo, i) => (
-              <img key={i} src={logo.src} alt="Sponsor" className={`${logo.size || "h-64"} object-contain`} loading="lazy" />
+              <img
+                key={i}
+                src={logo.src}
+                alt="Sponsor"
+                className={`${logo.size || "h-64"} object-contain`}
+                loading="lazy"
+              />
             ))}
           </div>
         </div>
@@ -178,7 +193,6 @@ export const Home = () => {
 
       {/* FOOTER */}
       <div className="h-28 w-full bg-[#082E7E]" />
-  </div>
-  
-  
-}
+    </div>
+  );
+};

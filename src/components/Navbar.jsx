@@ -1,8 +1,8 @@
-import { Menu, X } from "lucide-react"
-import { useState, useEffect } from "react"
-import { cn } from "../lib/utils"
-import { NavLink, Link } from "react-router-dom"
-import logo from "../assets/logo.png"
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "../lib/utils";
+import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const navItems = [
   { name: "HOME", path: "/" },
@@ -11,24 +11,24 @@ const navItems = [
   { name: "ABOUT US", path: "/about" },
   { name: "SPONSORS", path: "/sponsors" },
   { name: "POSTERS", path: "/posters" },
-]
+];
 
-const Navbar = ({ transparent = false}) => {
-    const [isScrolled, setIsScrolled] = useState(false)
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+const Navbar = ({ transparent = false }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-      if (!transparent) return
+  useEffect(() => {
+    if (!transparent) return;
 
-      const handleScroll = () => {
-        setIsScrolled(window.scrollY > 20)
-      }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
 
-      window.addEventListener("scroll", handleScroll)
-      return () => window.removeEventListener("scroll", handleScroll)
-    }, [transparent])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [transparent]);
 
-    const showScrolledStyle = transparent ? isScrolled : true
+  const showScrolledStyle = transparent ? isScrolled : true;
 
   return (
     <nav
@@ -36,13 +36,13 @@ const Navbar = ({ transparent = false}) => {
         "fixed top-0 w-full z-50 transition-all duration-300",
         showScrolledStyle
           ? "bg-[#DFE8F6] backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+          : "bg-transparent py-5",
       )}
     >
       <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-6">
         {/* Logo */}
         <Link to="/">
-            <img src={logo} alt="CNTC" className="h-14 w-auto" />
+          <img src={logo} alt="CNTC" className="h-14 w-auto" />
         </Link>
 
         {/* Desktop */}
@@ -58,18 +58,18 @@ const Navbar = ({ transparent = false}) => {
                   isActive
                     ? transparent && !showScrolledStyle
                       ? "text-[#A3B4D0]"
-                      : "text-[#5D77B1]" 
+                      : "text-[#5D77B1]"
                     : showScrolledStyle
                       ? "text-black hover:text-black/70"
-                      : "text-white hover:text-white/80"
+                      : "text-white hover:text-white/80",
                 )
               }
             >
               {item.name}
             </NavLink>
-            ))}
+          ))}
 
-         <Link
+          <Link
             to="/register"
             className="rounded-full bg-[#1F40AF] px-4 py-2 text-[16px] font-bold tracking-wider text-white transition hover:bg-blue-800"
           >
@@ -80,12 +80,19 @@ const Navbar = ({ transparent = false}) => {
         {/* Mobile Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 z-50"
+          className="md:hidden p-2 z-60"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMenuOpen ? (
-            <X size={24} className={showScrolledStyle ? "text-black" : "text-white"} />
+            <X
+              size={24}
+              className={showScrolledStyle ? "text-black" : "text-white"}
+            />
           ) : (
-            <Menu size={24} className={showScrolledStyle ? "text-black" : "text-white"} />
+            <Menu
+              size={24}
+              className={showScrolledStyle ? "text-black" : "text-white"}
+            />
           )}
         </button>
 
@@ -95,7 +102,7 @@ const Navbar = ({ transparent = false}) => {
             "fixed inset-0 flex flex-col items-center justify-center bg-slate-100/95 backdrop-blur-md transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+              : "opacity-0 pointer-events-none",
           )}
         >
           <div className="flex flex-col items-center gap-8 text-lg">
@@ -122,7 +129,7 @@ const Navbar = ({ transparent = false}) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
