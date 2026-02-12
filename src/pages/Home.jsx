@@ -73,7 +73,9 @@ export const Home = () => {
               </div>
 
               <a
-                href="/register"
+                href="https://www.eventbrite.com/e/2026-california-neurotechnology-conference-tickets-1982321023544?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-[11px] font-extrabold tracking-wider text-slate-900"
               >
                 REGISTER NOW
@@ -89,8 +91,8 @@ export const Home = () => {
         <div className="mx-auto max-w-6xl">
           <div className="relative flex items-center overflow-visible h-[520px]">
             {/* right image */}
-            <div className="absolute -right-92 top-1/2 -translate-y-1/2 w-[65vw]">
-              <div className="overflow-hidden rounded-[200px] bg-gray-200">
+            <div className="absolute -right-104 top-1/2 -translate-y-1/2 w-[74vw]">
+              <div className="overflow-hidden rounded-[10000px] bg-gray-200">
                 <img
                   src={aboutImg}
                   alt="Conference"
@@ -101,15 +103,15 @@ export const Home = () => {
             </div>
 
             {/* Blue pill overlay */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-[-28vw] w-[92vw] md:left-[-22vw] md:w-[78vw] lg:left-[-21vw] lg:w-[70vw]">
-              <div className="rounded-[220px] bg-[#5E7FB2] py-12 pl-24 pr-10 md:py-14 md:pl-50 md:pr-12 shadow-sm">
+            <div className="absolute top-1/2 -translate-y-1/2 left-[-28vw] w-[92vw] md:left-[-22vw] md:w-[78vw] lg:left-[-25vw] lg:w-[70vw]">
+              <div className="rounded-[220px] bg-[#5E7FB2] py-12 pl-24 pr-10 md:py-14 md:pl-70 md:pr-12 shadow-sm">
                 <h2 className="text-white font-extrabold leading-tight tracking-wide text-[34px] md:text-[42px]">
                   PIONEERING THE FUTURE OF
                   <br />
                   NEUROTECHNOLOGY
                 </h2>
 
-                <p className="mt-6 max-w-[520px] text-[18px] md:text-[20px] leading-7 text-white/90">
+                <p className="mt-6 max-w-[520px] text-[18px] md:text-[24px] leading-7 text-white/90">
                   The 4th annual California Neurotechnology <br />
                   Conference is coming to the Bay! Established <br />
                   in 2023, this is the only West-Coast <br />
