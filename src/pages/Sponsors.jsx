@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar";
 
-import emotiv from "../assets/sponsor-emotiv.png";
-import openwater from "../assets/sponsor-openwater.png";
-import ceribell from "../assets/sponsor-ceribell.png";
+import emotiv from "../assets/logos/sponsor-emotiv.png";
+import openwater from "../assets/logos/sponsor-openwater.png";
+import ceribell from "../assets/logos/sponsor-ceribell.png";
 
 function SponsorCard({ src, alt, imgSize = "max-h-[80%]" }) {
   return (

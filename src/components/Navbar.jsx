@@ -46,7 +46,7 @@ const Navbar = ({ transparent = false }) => {
       <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-6">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="CNTC" className="h-14 w-auto" />
+          <img src={logo} alt="CNTC" className="h-16 w-auto" />
         </Link>
 
         {/* Desktop */}

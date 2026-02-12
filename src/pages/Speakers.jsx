@@ -64,7 +64,7 @@ export const Speakers = () => {
       <Navbar transparent={false} />
 
       {/* HERO */}
-      <header className="relative h-[680px] w-full">
+      <header className="relative h-[690px] w-full">
         <img
           src={speakersHero}
           alt="Speakers"
