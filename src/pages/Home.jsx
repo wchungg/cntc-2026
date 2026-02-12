@@ -127,8 +127,8 @@ export const Home = () => {
 
       {/* SPEAKERS STRIP */}
       <section className="w-full px-6 mt-24 pb-16">
-        <div className="mx-auto max-w-6xl rounded-lg bg-slate-600 px-6 py-6">
-          <div className="text-center text-sm font-extrabold tracking-wider text-white">
+        <div className="mx-auto max-w-6xl bg-[#5D77B1] px-6 py-6">
+          <div className="text-center text-[40px] font-bold tracking-wider text-white">
             OUR 2026 SPEAKERS
           </div>
 
@@ -154,7 +154,7 @@ export const Home = () => {
       {/* PRESENTED BY */}
       <section className="w-full px-6 pb-10 mt-20">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center text-[40px] font-bold tracking-wider text-slate-900">
+          <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
             PRESENTED BY
           </div>
 
@@ -175,7 +175,7 @@ export const Home = () => {
       {/* SPONSORED BY */}
       <section className="w-full px-0 pb-14 mt-16">
         <div className="mx-auto ">
-          <div className="text-center text-[40px] font-bold tracking-wider text-slate-900">
+          <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
             SPONSORED BY
           </div>
 
