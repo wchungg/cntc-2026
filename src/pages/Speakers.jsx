@@ -42,7 +42,7 @@ function SpeakerCard({ img, name, title, tags, variant = "panelist" }) {
 
       <div className="px-4 py-4 h-[136px] bg-[#F5F6F7]">
         <div className="text-[26px] font-semibold text-black">{name}</div>
-        <div className="mt-2 text-[17px] leading-4 text-[#6B6B6B]">
+        <div className="mt-1 text-[17px] leading-5 text-[#6B6B6B]">
           {title}
         </div>
 
@@ -72,8 +72,8 @@ export const Speakers = () => {
         />
         <div className="absolute inset-0 bg-black/35" />
 
-        <div className="absolute inset-0 flex items-center">
-          <div className="mx-auto w-full max-w-7xl mt-90">
+        <div className="absolute inset-0 flex items-center px-8">
+          <div className="mx-auto w-full max-w-7xl mt-98">
             <div className="ml-auto max-w-md text-right">
               <h1 className="text-[60px] font-bold text-white">
                 OUR SPEAKERS
@@ -92,7 +92,7 @@ export const Speakers = () => {
       <div className="mt-14 mx-auto w-full max-w-6xl px-6 py-16">
         <section className="grid items-center gap-10 md:grid-cols-[360px_1fr]">
           <div className="pt-10">
-            <h2 className="text-[55px] font-bold text-slate-900">
+            <h2 className="text-[55px] font-bold text-black">
               KEYSTONE
               <br />
               SPEAKERS
@@ -116,13 +116,13 @@ export const Speakers = () => {
       {/* PANELISTS */}
       <div className="mx-auto w-full max-w-7xl mt-20">
         <section className="grid items-start gap-12 md:grid-cols-[220px_1fr]">
-          <div className="pt-8 md:-ml-16">
+          <div className="pt-8 md:-ml-16 ml-6">
             <h2 className="text-[50px] font-bold text-black">
               PANELISTS
             </h2>
           </div>
 
-          <div className="grid gap-y-10 md:gap-x-32 sm:gap-x-10 justify-center sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-y-10 md:gap-x-32 sm:gap-x-10 px-8 justify-center sm:grid-cols-2 lg:grid-cols-3">
             {panelists.map((p) => (
               <SpeakerCard
                 key={p.name + p.img}
