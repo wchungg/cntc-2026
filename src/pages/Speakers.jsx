@@ -60,7 +60,7 @@ function SpeakerCard({ img, name, title, tags, variant = "panelist" }) {
 
 export const Speakers = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white fade-in">
       <Navbar transparent={false} />
 
       {/* HERO */}

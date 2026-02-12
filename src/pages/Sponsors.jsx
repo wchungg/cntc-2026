@@ -30,7 +30,7 @@ function SponsorCard({ src, alt, imgSize = "max-h-[80%]" }) {
 
 export const Sponsors = () => {
   return (
-    <div className="min-h-screen bg-[#F4F4F4]">
+    <div className="min-h-screen bg-[#F4F4F4] fade-in">
       <Navbar transparent={false} />
 
       <main className="mx-auto w-full max-w-8xl px-16 pt-28 pb-24">

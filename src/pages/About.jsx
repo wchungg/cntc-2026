@@ -30,7 +30,7 @@ function MemberCard({ name, school, img }) {
 }
 
 export const About = () => {
-  return <div className='min-h-screen'>
+  return <div className='min-h-screen fade-in'>
     <Navbar transparent={false} />
     
     {/* HERO */}

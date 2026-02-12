@@ -40,9 +40,45 @@ function SpeakerTile({ name, img }) {
   );
 }
 
+import React, { useRef, useEffect, useState } from "react";
+
 export const Home = () => {
+  const headingRef = useRef(null);
+  const [transform, setTransform] = useState("none");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!headingRef.current) return;
+      const section = headingRef.current.getBoundingClientRect();
+      // Calculate scroll progress within the section (0 at top, 1 at 200px down)
+      const start = 0;
+      const end = 200;
+      let progress = (window.scrollY - (window.scrollY + section.top - window.innerHeight/2)) / (end - start);
+      progress = Math.max(0, Math.min(1, progress));
+      // Expand at the start, shrink back as you scroll more
+      // Scale from 1 to 1.12, translate from 0 to 24px right and -16px up, then back to 1 and 0
+      let scale, tx, ty;
+      if (progress < 0.5) {
+        // Expand
+        const t = progress * 2;
+        scale = 1 + 0.2 * t;
+        tx = 32 * t;
+        ty = -16 * t;
+      } else {
+        // Shrink back
+        const t = (1 - progress) * 2;
+        scale = 1 + 0.2 * t;
+        tx = 32 * t;
+        ty = -16 * t;
+      }
+      setTransform(`scale(${scale}) translate(${tx}px, ${ty}px)`);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white fade-in">
       <Navbar transparent={true} />
 
       {/* HERO */}
@@ -105,11 +141,20 @@ export const Home = () => {
             {/* Blue pill overlay */}
             <div className="absolute top-1/2 -translate-y-1/2 left-[-28vw] w-[92vw] md:left-[-22vw] md:w-[78vw] lg:left-[-25vw] lg:w-[70vw]">
               <div className="rounded-[220px] bg-[#5E7FB2] py-12 pl-24 pr-10 md:py-14 md:pl-70 md:pr-12 shadow-sm">
-                <h2 className="text-white font-extrabold leading-tight tracking-wide text-[34px] md:text-[42px]">
-                  PIONEERING THE FUTURE OF
-                  <br />
-                  NEUROTECHNOLOGY
-                </h2>
+                <h2
+                ref={headingRef}
+                style={{
+                  transform,
+                  transition: "transform 0.1s cubic-bezier(0.4,0,0.2,1)",
+                  willChange: "transform",
+                  display: "inline-block",
+                }}
+                className="text-white font-bold leading-tight tracking-wide text-[34px] md:text-[42px]"
+              >
+                PIONEERING THE FUTURE OF
+                <br />
+                NEUROTECHNOLOGY
+              </h2>
 
                 <p className="mt-6 max-w-[520px] text-[18px] md:text-[24px] leading-7 text-white/90">
                   The 4th annual California Neurotechnology <br />

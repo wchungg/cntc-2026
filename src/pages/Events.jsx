@@ -3,20 +3,9 @@ import eventHero from "../assets/eventHero.png";
 import { schedule } from "../data/eventsData";
 import mapImg from "../assets/map.png";
 
-const PinIcon = ({ className = "" }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
-  </svg>
-);
-
 export const Events = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen fade-in">
       <Navbar transparent={false} />
 
       {/* HERO */}
@@ -100,7 +89,14 @@ export const Events = () => {
                         </div>
 
                         <div className="mt-2 flex items-center gap-2 text-[20px] italic text-[#6B6B6B]">
-                          <PinIcon className="h-4 w-4 text-[#6B6B6B]" />
+                          <svg
+                            viewBox="0 0 24 24"
+                            className="h-4 w-4 text-[#6B6B6B]"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M12 2c-3.86 0-7 3.14-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                          </svg>
                           <span>{s.loc}</span>
                         </div>
                       </div>
