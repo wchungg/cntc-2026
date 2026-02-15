@@ -237,13 +237,42 @@ export const Home = () => {
       </section>
 
 
-
-
-
       <CardCarouselSection
         title="OUR 2026 SPEAKERS"
         items={speakerItems}
       />
+
+       {/* SLOGAN */}
+       <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
+        <p className="bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
+          NEUROTECHNOLOGY INNOVATION:
+        </p>
+
+        <p className="italic bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
+          FUTURE POSSIBILITIES & CHALLENGES
+        </p>
+      </div>
+
+      {/* PRESENTED BY */}
+      <section className="w-full px-6 pb-10 mt-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
+            PRESENTED BY
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center items-center gap-10">
+            {presentedByLogos.map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt="Presented by"
+                className={`${logo.size || "h-23"} object-contain`}
+                loading="lazy"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* SPONSORED BY */}
       <section className="w-full px-0 pb-14 mt-16">
