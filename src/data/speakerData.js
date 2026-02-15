@@ -23,10 +23,9 @@ export const keystoneSpeakers = [
 ]
 
 export const panelists = [
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Engineering", "AI Humanities"], img: p1 },
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Industry", "Ipsum"], img: p2 },
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Neuro", "Ipsum"], img: p3 },
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Keynote Speaker", "Ipsum"], img: p4 },
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Lorem", "Ipsum"], img: p5 },
-  { name: "Lorem Ipsum", title: "Lorem Ipsum", org: "", tags: ["Lorem", "Ipsum"], img: p6 },
+  { name: "Daniel Almeido Filho", title: "Brazil's Secretary of Technological Development and Innovation", org: "", tags: ["Engineering", "AI Humanities"], img: p1 },
+  { name: "Dr. Gaojian Huang", title: "SJSU BioE Department", org: "", tags: ["Neuro"], img: p2 },
+  { name: "Dr. Yue Luo", title: "SJSU BioE Department", org: "", tags: ["Neuro"], img: p3 },
+  { name: "Preeya Khanna", title: "Assistant Professor Berkeley", org: "", tags: ["Engineering"], img: p4 },
+  { name: "Brian Pepin", title: "CEO of Rune Labs", org: "", tags: ["Engineering", "Industry"], img: p6 },
 ]

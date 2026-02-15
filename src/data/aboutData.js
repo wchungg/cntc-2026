@@ -30,4 +30,8 @@ export const members = [
   { name: "Nidhi", school: "USC", img: null },
 
   { name: "Amy", school: "USC", img: null },
+
+  { name: "Siddhant", school: "UCSB", img: null },
+  { name: "Katherine", school: "UCSB", img: null },
+  { name: "William", school: "UCSB", img: null },
 ];

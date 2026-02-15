@@ -1,3 +1,4 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import heroImg from "../assets/heroImg.jpg";
 import aboutImg from "../assets/about.jpg";
@@ -9,6 +10,9 @@ import {
   sponsorLogos,
 } from "../data/homeData";
 
+/* -----------------------------
+   Marquee
+----------------------------- */
 function Marquee({ text }) {
   return (
     <div className="w-full h-12 overflow-hidden bg-[#1F40AF]">
@@ -22,26 +26,85 @@ function Marquee({ text }) {
   );
 }
 
-function SpeakerTile({ name, img }) {
+/* -----------------------------
+   Large Profile Card (Screenshot Style)
+----------------------------- */
+function ProfileCard({ name, img }) {
   return (
-    <div className="w-[170px] shrink-0 bg-white shadow-sm ring-1 ring-black/5">
-      <div className="h-[120px] w-full overflow-hidden bg-gray-100">
-        <img
-          src={img}
-          alt={name}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-      <div className="px-2 py-2 text-center text-[11px] font-semibold text-gray-900">
-        {name}
+    <div className="shrink-0 snap-start">
+      <div className="w-[260px] sm:w-[300px] md:w-[320px]">
+        <div className="overflow-hidden rounded-[28px] shadow-md bg-gray-100">
+          <img
+            src={img}
+            alt={name}
+            className="h-[200px] sm:h-[220px] md:h-[240px] w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="mt-4 text-center text-[22px] sm:text-[24px] font-medium text-black">
+          {name}
+        </div>
       </div>
     </div>
   );
 }
 
-import React, { useRef, useEffect, useState } from "react";
+/* -----------------------------
+   Carousel Section
+----------------------------- */
+function CardCarouselSection({ title, items }) {
+  const scrollerRef = useRef(null);
 
+  const scrollByCards = (dir) => {
+    if (!scrollerRef.current) return;
+    scrollerRef.current.scrollBy({
+      left: 340 * dir,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section className="w-full px-6 mt-24 pb-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center text-[40px] font-bold tracking-wider text-black">
+          {title}
+        </div>
+
+        <div className="relative mt-8">
+          <div
+            ref={scrollerRef}
+            className="flex gap-8 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory"
+          >
+            {items.map((item, i) => (
+              <ProfileCard key={i} name={item.name} img={item.img} />
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => scrollByCards(1)}
+            className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-black/10 hover:shadow-lg active:scale-95 transition"
+          >
+            →
+          </button>
+
+          {/* Left Arrow */}
+          <button
+            onClick={() => scrollByCards(-1)}
+            className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-black/10 hover:shadow-lg active:scale-95 transition"
+          >
+            ←
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -----------------------------
+   Home Page
+----------------------------- */
 export const Home = () => {
   const headingRef = useRef(null);
   const [transform, setTransform] = useState("none");
@@ -49,33 +112,44 @@ export const Home = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!headingRef.current) return;
-      const section = headingRef.current.getBoundingClientRect();
-      // Calculate scroll progress within the section (0 at top, 1 at 200px down)
-      const start = 0;
-      const end = 200;
-      let progress = (window.scrollY - (window.scrollY + section.top - window.innerHeight/2)) / (end - start);
-      progress = Math.max(0, Math.min(1, progress));
-      // Expand at the start, shrink back as you scroll more
-      // Scale from 1 to 1.12, translate from 0 to 24px right and -16px up, then back to 1 and 0
-      let scale, tx, ty;
-      if (progress < 0.5) {
-        // Expand
-        const t = progress * 2;
-        scale = 1 + 0.2 * t;
-        tx = 32 * t;
-        ty = -16 * t;
-      } else {
-        // Shrink back
-        const t = (1 - progress) * 2;
-        scale = 1 + 0.2 * t;
-        tx = 32 * t;
-        ty = -16 * t;
-      }
-      setTransform(`scale(${scale}) translate(${tx}px, ${ty}px)`);
+
+      const rect = headingRef.current.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+
+      const mid = viewportH * 0.55;
+      const delta = mid - rect.top;
+      const progress = Math.max(0, Math.min(1, delta / 220));
+
+      const scale = 1 + 0.12 * Math.sin(progress * Math.PI);
+      const tx = 18 * Math.sin(progress * Math.PI);
+      const ty = -10 * Math.sin(progress * Math.PI);
+
+      setTransform(`translate(${tx}px, ${ty}px) scale(${scale})`);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const speakerItems = useMemo(
+    () =>
+      speakerTiles.map((s) => ({
+        name: s.name,
+        img: s.img,
+      })),
+    []
+  );
+
+  const sponsorItems = useMemo(
+    () =>
+      sponsorLogos.map((l, i) => ({
+        name: l.name || `Sponsor ${i + 1}`,
+        img: l.src,
+      })),
+    []
+  );
 
   return (
     <div className="min-h-screen bg-white fade-in">
@@ -87,135 +161,89 @@ export const Home = () => {
           <img
             src={heroImg}
             alt="CNTC Hero"
-            className="h-full w-full object-cover blur-[1.5px] scale-100"
+            className="h-full w-full object-cover blur-[1.5px]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/10" />
         </div>
 
         <div className="relative z-20 w-full pl-18 pr-8 pt-40 md:pt-125">
-          <div className="max-w-8xl">
-            <div className="max-w-xl">
-              <h1 className="text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-6xl">
-                2026 CALIFORNIA
-                <br />
-                NEUROTECHNOLOGY
-                <br />
-                CONFERENCE
-              </h1>
+          <div className="max-w-xl">
+            <h1 className="text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-6xl">
+              2026 CALIFORNIA
+              <br />
+              NEUROTECHNOLOGY
+              <br />
+              CONFERENCE
+            </h1>
 
-              <div className="mt-4 text-2xl leading-6 text-white/80">
-                <div>Sunday, April 26th, 2026</div>
-                <div>UC Berkeley</div>
-              </div>
-
-              <a
-                href="https://www.eventbrite.com/e/2026-california-neurotechnology-conference-tickets-1982321023544?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-[11px] font-extrabold tracking-wider text-slate-900"
-              >
-                REGISTER NOW
-              </a>
+            <div className="mt-4 text-2xl leading-6 text-white/80">
+              <div>Sunday, April 26th, 2026</div>
+              <div>UC Berkeley</div>
             </div>
+
+            <a
+              href="https://www.eventbrite.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-[11px] font-extrabold tracking-wider text-slate-900"
+            >
+              REGISTER NOW
+            </a>
           </div>
         </div>
       </header>
+
       <Marquee text={marqueeText} />
 
-      {/* ABOUT SECTION */}
-      <section className="w-full px-6 py-14 mt-24 overflow-x-hidden">
-        <div className="mx-auto max-w-6xl">
-          <div className="relative flex items-center overflow-visible h-[520px]">
-            {/* right image */}
-            <div className="absolute -right-104 top-1/2 -translate-y-1/2 w-[74vw]">
-              <div className="overflow-hidden rounded-[10000px] bg-gray-200">
+      {/* ABOUT SECTION — fixed layout + nicer pill */}
+
+      {/* ABOUT SECTION — refined proportions */}
+      <section className="w-full mt-28">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex items-center gap-10">
+
+            {/* LEFT BLUE PILL (ends before image) */}
+            <div className="flex-1">
+              <div className="bg-[#5E7FB2] rounded-r-[240px] px-16 py-16 shadow-sm">
+                <h2 className="text-white font-extrabold tracking-wide leading-[1.05] text-[46px]">
+                  PIONEERING THE FUTURE OF
+                  <br />
+                  NEUROTECHNOLOGY
+                </h2>
+
+                <p className="mt-6 text-white/90 text-[20px] leading-8 max-w-[560px]">
+                  The 4th annual California Neurotechnology Conference is coming to the Bay!
+                  Established in 2023, this is the only West-Coast conference bringing together
+                  students and experts for a day dedicated to expanding the frontiers of
+                  neurotechnology.
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT IMAGE (separate, no overlap) */}
+            <div className="w-[46%]">
+              <div className="overflow-hidden rounded-[420px] shadow-sm bg-gray-200">
                 <img
                   src={aboutImg}
                   alt="Conference"
-                  className="h-[260px] w-full object-cover md:h-[520px]"
+                  className="h-[520px] w-full object-cover"
                   loading="lazy"
                 />
               </div>
             </div>
 
-            {/* Blue pill overlay */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-[-28vw] w-[92vw] md:left-[-22vw] md:w-[78vw] lg:left-[-25vw] lg:w-[70vw]">
-              <div className="rounded-[220px] bg-[#5E7FB2] py-12 pl-24 pr-10 md:py-14 md:pl-70 md:pr-12 shadow-sm">
-                <h2
-                ref={headingRef}
-                style={{
-                  transform,
-                  transition: "transform 0.1s cubic-bezier(0.4,0,0.2,1)",
-                  willChange: "transform",
-                  display: "inline-block",
-                }}
-                className="text-white font-bold leading-tight tracking-wide text-[34px] md:text-[42px]"
-              >
-                PIONEERING THE FUTURE OF
-                <br />
-                NEUROTECHNOLOGY
-              </h2>
-
-                <p className="mt-6 max-w-[520px] text-[18px] md:text-[24px] leading-7 text-white/90">
-                  The 4th annual California Neurotechnology <br />
-                  Conference is coming to the Bay! Established <br />
-                  in 2023, this is the only West-Coast <br />
-                  conference bringing together students and <br />
-                  experts for a day dedicated to expanding the <br />
-                  frontiers of neurotechnology.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* SPEAKERS STRIP */}
-      <section className="w-full px-6 mt-24 pb-16">
-        <div className="mx-auto max-w-6xl bg-[#5D77B1] px-6 py-6">
-          <div className="text-center text-[40px] font-bold tracking-wider text-white">
-            OUR 2026 SPEAKERS
-          </div>
 
-          <div className="mt-5 flex items-center justify-center gap-4 overflow-x-auto pb-2">
-            {speakerTiles.map((s) => (
-              <SpeakerTile key={s.name} name={s.name} img={s.img} />
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* SLOGAN */}
-      <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
-        <p className="bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
-          NEUROTECHNOLOGY INNOVATION:
-        </p>
 
-        <p className="italic bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
-          FUTURE POSSIBILITIES & CHALLENGES
-        </p>
-      </div>
 
-      {/* PRESENTED BY */}
-      <section className="w-full px-6 pb-10 mt-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
-            PRESENTED BY
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center items-center gap-10">
-            {presentedByLogos.map((logo, i) => (
-              <img
-                key={i}
-                src={logo.src}
-                alt="Presented by"
-                className={`${logo.size || "h-23"} object-contain`}
-                loading="lazy"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <CardCarouselSection
+        title="OUR 2026 SPEAKERS"
+        items={speakerItems}
+      />
 
       {/* SPONSORED BY */}
       <section className="w-full px-0 pb-14 mt-16">
@@ -238,7 +266,6 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <div className="h-28 w-full bg-[#082E7E]" />
     </div>
   );

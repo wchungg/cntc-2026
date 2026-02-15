@@ -30,34 +30,31 @@ function SponsorCard({ src, alt, imgSize = "max-h-[80%]" }) {
 
 export const Sponsors = () => {
   return (
-    <div className="min-h-screen bg-[#F4F4F4] fade-in">
-      <Navbar transparent={false} />
+    <div className="min-h-screen flex flex-col bg-[#F2F2F2] fade-in">
+      {/* Top */}
+      <div className="bg-[#DDE9FF]">
+        <Navbar transparent={false} />
+      </div>
 
-      <main className="mx-auto w-full max-w-8xl px-16 pt-28 pb-24">
-        <h1 className="mt-10 text-center text-[61px] font-bold text-black">
+      {/* Main content grows */}
+      <main className="flex-grow mx-auto w-full max-w-6xl px-6 pt-28 pb-16">
+        <h1 className="text-center text-6xl font-extrabold text-black">
           SPONSORS
         </h1>
 
-        <div className="mt-12 grid gap-15 md:grid-cols-2 justify-items-center">
-          <SponsorCard
-            src={emotiv}
-            alt="Emotiv"
-            imgSize="max-h-[100%] scale-200"
-          />
-          <SponsorCard
-            src={openwater}
-            alt="Openwater"
-            imgSize="max-h-[100%] scale-140"
-          />
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+          <SponsorCard src={emotiv} alt="Emotiv" />
+          <SponsorCard src={openwater} alt="Openwater" />
         </div>
 
-        <div className="mt-16 flex justify-center">
-          <SponsorCard src={ceribell} alt="Ceribell" imgSize="max-h-[90%]" />
+        <div className="mt-12 flex justify-center">
+          <SponsorCard src={ceribell} alt="Ceribell" />
         </div>
       </main>
 
-      {/* footer bar */}
-      <div className="mt-10 h-28 w-full bg-[#082E7E]" />
+      {/* Footer bar pinned properly */}
+      <div className="h-24 w-full bg-[#082E7E]" />
     </div>
   );
 };
+
