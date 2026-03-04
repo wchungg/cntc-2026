@@ -53,8 +53,16 @@ export const Sponsors = () => {
       </main>
 
       {/* Footer bar pinned properly */}
-      <div className="h-24 w-full bg-[#082E7E]" />
+      <footer className="mt-32 w-full bg-[#082E7E] text-white">
+        <div className="mx-auto max-w-8xl px-10 py-7 flex items-center justify-between">
+          <p className="text-sm">© 2026 CNTC</p>
+
+          <div className="text-sm opacity-80 text-right flex flex-col">
+            <span>Developed by</span>
+            <span>Siddhant Subramanian and William Chung (NeuroTech@UCSB)</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
-

@@ -139,7 +139,7 @@ export const Home = () => {
         name: s.name,
         img: s.img,
       })),
-    []
+    [],
   );
 
   const sponsorItems = useMemo(
@@ -148,7 +148,7 @@ export const Home = () => {
         name: l.name || `Sponsor ${i + 1}`,
         img: l.src,
       })),
-    []
+    [],
   );
 
   return (
@@ -201,7 +201,6 @@ export const Home = () => {
       <section className="w-full mt-28">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center gap-10">
-
             {/* LEFT BLUE PILL (ends before image) */}
             <div className="flex-1">
               <div className="bg-[#5E7FB2] rounded-r-[240px] px-16 py-16 shadow-sm">
@@ -212,10 +211,10 @@ export const Home = () => {
                 </h2>
 
                 <p className="mt-6 text-white/90 text-[20px] leading-8 max-w-[560px]">
-                  The 4th annual California Neurotechnology Conference is coming to the Bay!
-                  Established in 2023, this is the only West-Coast conference bringing together
-                  students and experts for a day dedicated to expanding the frontiers of
-                  neurotechnology.
+                  The 4th annual California Neurotechnology Conference is coming
+                  to the Bay! Established in 2023, this is the only West-Coast
+                  conference bringing together students and experts for a day
+                  dedicated to expanding the frontiers of neurotechnology.
                 </p>
               </div>
             </div>
@@ -231,7 +230,6 @@ export const Home = () => {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -242,7 +240,7 @@ export const Home = () => {
       /> */}
 
       {/* SLOGAN */}
-      <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
+      <div className="mt-20 text-center font-extrabold text-[55px] leading-tight">
         <p className="bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
           NEUROTECHNOLOGY INNOVATION:
         </p>
@@ -253,7 +251,7 @@ export const Home = () => {
       </div>
 
       {/* PRESENTED BY */}
-      <section className="w-full px-6 pb-10 mt-20">
+      <section className="w-full px-6 mt-28">
         <div className="mx-auto max-w-6xl">
           <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
             PRESENTED BY
@@ -274,7 +272,7 @@ export const Home = () => {
       </section>
 
       {/* SPONSORED BY */}
-      <section className="w-full px-0 pb-14 mt-16">
+      <section className="w-full mt-16">
         <div className="mx-auto ">
           <div className="text-center text-[40px] font-bold tracking-wider text-[#000000]">
             SPONSORED BY
@@ -294,7 +292,16 @@ export const Home = () => {
         </div>
       </section>
 
-      <div className="h-28 w-full bg-[#082E7E]" />
+      <footer className="mt-20 w-full bg-[#082E7E] text-white">
+        <div className="mx-auto max-w-8xl px-10 py-7 flex items-center justify-between">
+          <p className="text-sm">© 2026 CNTC</p>
+
+          <div className="text-sm opacity-80 text-right flex flex-col">
+            <span>Developed by</span>
+            <span>Siddhant Subramanian and William Chung (NeuroTech@UCSB)</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

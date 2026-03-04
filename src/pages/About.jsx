@@ -1,7 +1,7 @@
-import Navbar from '../components/Navbar'
+import Navbar from "../components/Navbar";
 import aboutHero from "../assets/aboutHero.jpg";
 
-import { members } from '../data/aboutData';
+import { members } from "../data/aboutData";
 
 function MemberCard({ name, school, img }) {
   return (
@@ -30,43 +30,55 @@ function MemberCard({ name, school, img }) {
 }
 
 export const About = () => {
-  return <div className='min-h-screen fade-in'>
-    <Navbar transparent={false} />
-    
-    {/* HERO */}
-    <header className="relative h-[690px] w-full">
-      <img
-        src={aboutHero}
-        alt="About us"
-        className="h-full w-full object-cover object-[30%_80%]"
-      />
-      <div className="absolute inset-0 bg-black/35" />
+  return (
+    <div className="min-h-screen fade-in">
+      <Navbar transparent={false} />
 
-      <div className="absolute inset-0 flex">
-        <div className="mx-auto w-full max-w-6xl mt-36">
-          <div className="ml-auto max-w-md text-right">
-            <h1 className="text-[60px] font-bold text-white">
-              ABOUT US
-            </h1>
-            <p className="text-[20px] leading-5 text-white/85">
-              Established in 2023, CNTC is California's <br />
-              Only Student-Run Annual Neurotechnology 
-              Conference.
-            </p>
+      {/* HERO */}
+      <header className="relative h-[690px] w-full">
+        <img
+          src={aboutHero}
+          alt="About us"
+          className="h-full w-full object-cover object-[30%_80%]"
+        />
+        <div className="absolute inset-0 bg-black/35" />
+
+        <div className="absolute inset-0 flex">
+          <div className="mx-auto w-full max-w-6xl mt-36">
+            <div className="ml-auto max-w-md text-right">
+              <h1 className="text-[60px] font-bold text-white">ABOUT US</h1>
+              <p className="text-[20px] leading-5 text-white/85">
+                Established in 2023, CNTC is California's <br />
+                Only Student-Run Annual Neurotechnology Conference.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <div className="mt-20 mx-auto w-full max-w-[1200px]">
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-10 gap-y-10">
-        {members.map((m) => (
-          <MemberCard key={m.name} name={m.name} school={m.school} img={m.img} />
-        ))}
+      <div className="mt-20 mx-auto w-full max-w-[1200px]">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-10 gap-y-10">
+          {members.map((m) => (
+            <MemberCard
+              key={m.name}
+              name={m.name}
+              school={m.school}
+              img={m.img}
+            />
+          ))}
+        </div>
       </div>
+
+      <footer className="mt-28 w-full bg-[#082E7E] text-white">
+        <div className="mx-auto max-w-8xl px-10 py-7 flex items-center justify-between">
+          <p className="text-sm">© 2026 CNTC</p>
+
+          <div className="text-sm opacity-80 text-right flex flex-col">
+            <span>Developed by</span>
+            <span>Siddhant Subramanian and William Chung (NeuroTech@UCSB)</span>
+          </div>
+        </div>
+      </footer>
     </div>
-
-    <div className="mt-28 h-28 w-full bg-[#082E7E]" />
-
-  </div>
-}
+  );
+};
