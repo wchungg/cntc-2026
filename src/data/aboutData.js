@@ -31,7 +31,7 @@ export const members = [
 
   { name: "Amy", school: "USC", img: null },
 
-  { name: "Siddhant", school: "UCSB", img: null },
-  { name: "Katherine", school: "UCSB", img: null },
-  { name: "William", school: "UCSB", img: null },
+  { name: "Siddhant Subramanian", school: "UCSB", img: null },
+  { name: "Katherine Duong", school: "UCSB", img: null },
+  { name: "William Chung", school: "UCSB", img: null },
 ];

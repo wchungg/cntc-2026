@@ -8,6 +8,7 @@ import ntBerkeley from "../assets/logos/presented-neurotech-berkeley.png"
 import crux from "../assets/logos/presented-crux-ucla.png"
 import triton from "../assets/logos/presented-triton.png"
 import ntUsc from "../assets/logos/presented-neurotech-usc.png"
+import ntUCSB from "../assets/logos/Neurotech@ucsb.jpg"
 
 import sponsorEmotiv from "../assets/logos/sponsor-emotiv.png"
 import sponsorOpenwater from "../assets/logos/sponsor-openwater.png"
@@ -17,7 +18,7 @@ export const marqueeText =
   "CNTC 2026\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0SUNDAY, APRIL 26TH\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0UC BERKELEY\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0THE 4TH ANNUAL CALIFORNIA NEUROTECHNOLOGY CONFERENCE\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0CALIFORNIA'S ONLY STUDENT-RUN ANNUAL NEUROTECH CONFERENCE\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0ESTABLISHED 2023\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0BCI\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0NEURAL ENGINEERING\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0ETHICS\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0CNTC 2026\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0SUNDAY, APRIL 26TH\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0UC BERKELEY\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0THE 4TH ANNUAL CALIFORNIA NEUROTECHNOLOGY CONFERENCE\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0CALIFORNIA'S ONLY STUDENT-RUN ANNUAL NEUROTECH CONFERENCE\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0ESTABLISHED 2023\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0BCI\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0NEURAL ENGINEERING\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0ETHICS\u00A0\u00A0\u00A0\u00A0\u00A0•\u00A0\u00A0\u00A0\u00A0\u00A0"
 
 export const speakerTiles = [
-  { name: "Daniel Almeido Filho", img: s1 },
+  { name: "Daniel Almeida Filho", img: s1 },
   { name: "Josef Parvizi", img: s2 },
   { name: "Kevin Lanzo", img: s3 },
   { name: "Preeya Khanna", img: s4 },
@@ -29,6 +30,7 @@ export const presentedByLogos = [ // no size -> defaults to 23px
   { src: crux, size: "h-20" },
   { src: triton },
   { src: ntUsc, size: "h-18" },
+  { src: ntUCSB, size: "h-40 w-50 object-contain"},
 ]
 
 export const sponsorLogos = [

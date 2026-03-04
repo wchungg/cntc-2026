@@ -236,14 +236,13 @@ export const Home = () => {
         </div>
       </section>
 
-
-      <CardCarouselSection
+      {/* <CardCarouselSection
         title="OUR 2026 SPEAKERS"
         items={speakerItems}
-      />
+      /> */}
 
-       {/* SLOGAN */}
-       <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
+      {/* SLOGAN */}
+      <div className="mt-4 text-center font-extrabold text-[55px] leading-tight">
         <p className="bg-gradient-to-r from-[#072A74] to-[#0D4FDA] bg-clip-text text-transparent">
           NEUROTECHNOLOGY INNOVATION:
         </p>
